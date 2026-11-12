@@ -1,0 +1,119 @@
+{
+  "data": {
+    "pages": 30000,
+    "clients": 32,
+    "base_rate": 0.542,
+    "label": "impressions last 30d < 0.8 x previous 30d (trend_direction == down)",
+    "prediction_moment": "day -30, features from days 31-90 + content metadata"
+  },
+  "validation": "5-fold GroupKFold by client, logistic regression, seed 42",
+  "per_fold_p50": [
+    {
+      "model": 0.7,
+      "rule": 0.74,
+      "base_rate": 0.49
+    },
+    {
+      "model": 0.82,
+      "rule": 0.66,
+      "base_rate": 0.645
+    },
+    {
+      "model": 0.66,
+      "rule": 0.5,
+      "base_rate": 0.379
+    },
+    {
+      "model": 0.8,
+      "rule": 0.7,
+      "base_rate": 0.622
+    },
+    {
+      "model": 0.98,
+      "rule": 0.86,
+      "base_rate": 0.585
+    }
+  ],
+  "mean_p50": {
+    "model": 0.792,
+    "model_std": 0.125,
+    "rule": 0.692
+  },
+  "precision_at_k_curve": {
+    "k": [
+      10,
+      20,
+      30,
+      50,
+      75,
+      100,
+      150,
+      200,
+      300
+    ],
+    "model": [
+      0.82,
+      0.82,
+      0.813,
+      0.792,
+      0.805,
+      0.81,
+      0.804,
+      0.793,
+      0.781
+    ],
+    "rule": [
+      0.68,
+      0.7,
+      0.7,
+      0.692,
+      0.699,
+      0.704,
+      0.695,
+      0.693,
+      0.707
+    ],
+    "base rate": [
+      0.544,
+      0.544,
+      0.544,
+      0.544,
+      0.544,
+      0.544,
+      0.544,
+      0.544,
+      0.544
+    ]
+  },
+  "confidence_bands": {
+    "high": {
+      "declined": 0.759,
+      "pages": 1220
+    },
+    "medium": {
+      "declined": 0.698,
+      "pages": 11703
+    },
+    "low": {
+      "declined": 0.532,
+      "pages": 10667
+    },
+    "none": {
+      "declined": 0.233,
+      "pages": 6410
+    }
+  },
+  "within_client_top10": {
+    "clients": 24,
+    "model": 0.754,
+    "rule": 0.65,
+    "client_base_rate": 0.53
+  },
+  "action_counts": {
+    "monitor": 11452,
+    "refresh_review": 9209,
+    "snippet_and_intent_review": 3788,
+    "no_action": 3388,
+    "watch_spike": 2163
+  }
+}
